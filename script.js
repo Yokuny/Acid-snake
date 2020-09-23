@@ -17,23 +17,13 @@ function criarCobrinha(){
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 }
-////////////////
-document.addEventListener('keydown', update); //ouça teclas do Document
-function update(event){ //muda a direção do movimento
-    if(event.keyCode == 37 && direction != "right") direction = "left"; //muda a direção caso a teclad clicado não seja a direção contraria a direção atual na hora do click
-    if(event.keyCode == 38 && direction != "down") direction = "up";
-    if(event.keyCode == 39 && direction != "left") direction = "right";
-    if(event.keyCode == 40 && direction != "up") direction = "down";
-}
-///////////////
-function iniciarJogo(){
+function limitesCanvas(){
     if(snake[0].x > (15 * box) && direction == "right") snake[0].x = 0; //se a posição no eixo x da cobra for maior que 15 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
     if(snake[0].x < 0 && direction == "left") snake[0].x = (16 * box); //se a posição no eixo x da cobra for maior que 15 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
-    if(snake[0].y > (15 * box) && direction == "down") snake[0].y = 0; //se a posição no eixo x da cobra for maior que 15 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
+    if(snake[0].y > (16 * box) && direction == "down") snake[0].y = 0; //se a posição no eixo x da cobra for maior que 15 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
     if(snake[0].y < 0 && direction == "up") snake[0].y = (16 * box); //se a posição no eixo x da cobra for maior que 15 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
-    
-    criarBackground();
-    criarCobrinha();
+}
+function movimentação(){
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
     if(direction == "right") snakeX += box;
@@ -47,4 +37,19 @@ function iniciarJogo(){
     }
     snake.unshift(newHead);
 }
-let jogo = setInterval(iniciarJogo, 150); //roda a função a cada 100ms
+////////////////
+document.addEventListener('keydown', update); //ouça teclas do Document
+function update(event){ //muda a direção do movimento
+    if(event.keyCode == 37 && direction != "right") direction = "left"; //muda a direção caso a teclad clicado não seja a direção contraria a direção atual na hora do click
+    if(event.keyCode == 38 && direction != "down") direction = "up";
+    if(event.keyCode == 39 && direction != "left") direction = "right";
+    if(event.keyCode == 40 && direction != "up") direction = "down";
+}
+///////////////
+function iniciarJogo(){
+    criarBackground();
+    criarCobrinha();
+    limitesCanvas();
+    movimentação();
+}
+let jogo = setInterval(iniciarJogo, 100); //roda a função a cada 100ms
