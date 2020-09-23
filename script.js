@@ -6,6 +6,7 @@ snake [0] = {
     x: 8 * box,
     y: 8 * box
 }
+let direction = "right"
 function criarBackground(){
     context.fillStyle = 'lightgreen'; //cada quadradinho verde
     context.fillRect(0, 0, 16 * box, 16 * box); //16 quadradinhos. cada quadradinho com 32 altura largura
@@ -16,5 +17,20 @@ function criarCobrinha(){
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 }
-criarBackground();
-criarCobrinha();
+function iniciarJogo(){
+    criarBackground();
+    criarCobrinha();
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+    if(direction == "right") snakeX += box;
+    if(direction == "down") snakeY += box;
+    if(direction == "left") snakeX -= box;
+    if(direction == "up") snakeY -= box;
+    snake.pop(); //tira a ponta da cauda para fazer efeito de movimento
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+    snake.unshift(newHead);
+}
+let jogo = setInterval(iniciarJogo, 100); //roda a função a cada 100ms
