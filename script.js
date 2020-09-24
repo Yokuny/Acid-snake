@@ -1,6 +1,10 @@
 let canvas = document.getElementById('snake'); //chamando apartir do id do elemento
 let context = canvas.getContext('2d'); //diz oque vai acontecer dentro do campo
 let box = 32; //32px cada quadradinho jogavel
+let food = {
+    x:Math.floor(Math.random() * 15 + 1) * box , //criando valor random para a posição
+    y:Math.floor(Math.random() * 15 + 1) * box 
+}
 let snake = [];
 snake [0] = {
     x: 8 * box,
@@ -37,6 +41,11 @@ function movimentação(){
     }
     snake.unshift(newHead);
 }
+function drawFood(){
+    context.fillStyle = 'red'
+    context.fillRect(food.x, food.y, box, box); //preenchendo tal posição em tal altura e largura
+}
+
 ////////////////
 document.addEventListener('keydown', update); //ouça teclas do Document
 function update(event){ //muda a direção do movimento
@@ -51,5 +60,6 @@ function iniciarJogo(){
     criarCobrinha();
     limitesCanvas();
     movimentação();
+    drawFood();
 }
 let jogo = setInterval(iniciarJogo, 100); //roda a função a cada 100ms
