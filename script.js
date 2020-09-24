@@ -10,7 +10,7 @@ snake [0] = { //8px é o pixel do tamanho da cobra
     x: 8 * box,
     y: 8 * box
 }
-let game = setInterval(startGame, 100);
+let game = setInterval(startGame, 50);
 function startGame(){
     backgroundGenerate();
     snakeGenerate();
