@@ -59,10 +59,10 @@ function movimentation(){
     snake.unshift(newHead);
 }
 function canvasLimite(){
-    if(snake[0].x > (30 * box) && direction == "right") snake[0].x = 0; //se a posição no eixo x da cobra for maior que 30 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
-    if(snake[0].x < 0 && direction == "left") snake[0].x = (30 * box); 
-    if(snake[0].y > (30 * box) && direction == "down") snake[0].y = 0; 
-    if(snake[0].y < 0 && direction == "up") snake[0].y = (30 * box); 
+    if(snake[0].x > (31 * box) && direction == "right") snake[0].x = 0; //se a posição no eixo x da cobra for maior que 30 posições o tamanho da caixa ela recebe 0 para voltar ao inicio
+    if(snake[0].x < 0 && direction == "left") snake[0].x = (31 * box); 
+    if(snake[0].y > (31 * box) && direction == "down") snake[0].y = 0; 
+    if(snake[0].y < 0 && direction == "up") snake[0].y = (31 * box); 
 }
 function foodGenerate(){
     context.fillStyle = colorGenerate();
