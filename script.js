@@ -34,14 +34,12 @@ function movimentação(){
     if(direction == "down") snakeY += box;
     if(direction == "left") snakeX -= box;
     if(direction == "up") snakeY -= box;
-    
     if(snakeX != food.x || snakeY != food.y){
         snake.pop(); //tira a ponta da cauda para fazer efeito de movimento
     }else{
         food.x = Math.floor(Math.random() * 15 + 1) * box; //modifica valor da posição da fruta
         food.y = Math.floor(Math.random() * 15 + 1) * box; 
     }
-
     let newHead = {
         x: snakeX,
         y: snakeY
@@ -67,5 +65,13 @@ function iniciarJogo(){
     limitesCanvas();
     movimentação();
     drawFood();
+    for(i = 1; i < snake.length; i++){ //se o inicio do index - a cabeça - pegar no corpo, acaba
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            clearInterval(jogo);
+            alert('Game Over');
+        }
+    }
 }
-let jogo = setInterval(iniciarJogo, 100); //roda a função a cada 100ms
+let jogo = setInterval(iniciarJogo, 100); //roda a função a cada 100ms]
+
+
