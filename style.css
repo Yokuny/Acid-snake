@@ -1,9 +1,18 @@
-body{
+html, body{
     height: 94vh;
-    width: 99vw;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: flex;
     flex-direction: column; /*em vez de flex no eixo x*/
     justify-content: center;
     align-items: center;
-    background-color: #312638;
+}
+#title{
+    font-size: 5vh;
+}
+#field{
+    height: 99vw;
+    display: flex;
 }
