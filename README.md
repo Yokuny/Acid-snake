@@ -1,2 +1,2 @@
-# little-snake-game
+# Acid#snake
 HTML snake game
