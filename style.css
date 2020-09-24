@@ -1,0 +1,9 @@
+body{
+    height: 94vh;
+    width: 99vw;
+    display: flex;
+    flex-direction: column; /*em vez de flex no eixo x*/
+    justify-content: center;
+    align-items: center;
+    background-color: #312638;
+}
